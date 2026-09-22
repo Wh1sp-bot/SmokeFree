@@ -1,0 +1,20 @@
+flowchart LR
+    Start(["Запуск"]) -->|профіль відсутній| Create["Створення профілю\n(ProfileFormView, mode: create)"]
+    Start -->|профіль є| Home
+
+    Create -->|Builder.build() успішний → save()| Home["Прогрес (Home)\nсписок показників"]
+
+    Home -->|push id етапу| Detail["Деталі етапу\n(MilestoneDetailView)"]
+    Detail -->|pop / swipe back| Home
+
+    Home -->|push| History["Журнал тяги\n(HistoryView, список)"]
+    History -->|pop / swipe back| Home
+
+    Home -->|"modal: presentEditProfile()"| EditProfile["Редагування профілю\n(ProfileFormView, mode: edit)"]
+    EditProfile -->|save → dismiss| Home
+
+    History -->|"modal: presentNote(for:)"| Note["Нотатка до епізоду\n(NoteEditorView)"]
+    Note -->|save/cancel → dismiss| History
+
+    Home -.вкладка.-> SOS["SOS\n(дихальна вправа)"]
+    SOS -.вкладка.-> Home

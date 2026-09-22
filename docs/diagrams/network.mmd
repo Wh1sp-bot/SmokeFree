@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant V as MotivationCardView
+    participant VM as MotivationViewModel
+    participant S as ZenQuotesService
+    participant N as ZenQuotes API
+
+    V->>VM: .task { await load() }
+    VM->>VM: state = .loading
+    VM->>S: fetchRandomQuote()
+    S->>N: GET /api/random
+    alt 200 OK, валідний JSON, не порожньо
+        N-->>S: [{q, a, h}]
+        S-->>VM: MotivationalQuote
+        VM->>VM: state = .loaded(quote)
+    else HTTP-статус поза 200...299
+        N-->>S: 4xx/5xx
+        S-->>VM: NetworkError.badStatus
+        VM->>VM: state = .failed(message)
+    else тіло не декодується
+        N-->>S: некоректний JSON
+        S-->>VM: NetworkError.decoding
+        VM->>VM: state = .failed(message)
+    else масив порожній
+        N-->>S: []
+        S-->>VM: NetworkError.empty
+        VM->>VM: state = .empty
+    else транспортна помилка
+        S--xVM: NetworkError.transport (немає мережі/таймаут)
+        VM->>VM: state = .failed(message)
+    end
+    VM-->>V: оновлений state (@Observable)

@@ -1,0 +1,51 @@
+flowchart TB
+    subgraph Presentation["Presentation (MVVM)"]
+        HomeView --> HomeVM["HomeViewModel"]
+        ProfileFormView --> ProfileVM["ProfileFormViewModel"]
+        SOSView --> BreathingVM["BreathingViewModel"]
+    end
+
+    subgraph Domain["Domain (моделі, чиста логіка)"]
+        Models["QuitProfile · HealthMilestone · CravingEvent"]
+        Calc["ProgressCalculating"]
+        Timeline["MilestoneTimeline"]
+        Builder["QuitProfileBuilder (Builder)"]
+        Breathing["BreathingPattern (Strategy)"]
+    end
+
+    subgraph Data["Data (доступ до даних)"]
+        ProfileRepo["ProfileRepository\n(ProfileProviding)"]
+        Journal["CravingJournal\n(CravingLogging)"]
+        Storage["DataStoring"]
+        UD["UserDefaultsStorage\n(Adapter)"]
+        Mem["InMemoryStorage"]
+    end
+
+    subgraph Services
+        Haptics["HapticsProviding"]
+        CH["CoreHapticsAdapter\n(Adapter)"]
+    end
+
+    Container["AppContainer\n(Composition Root / DI)"]
+
+    HomeVM --> ProfileRepo
+    HomeVM --> Journal
+    HomeVM --> Calc
+    HomeVM --> Timeline
+    ProfileVM --> ProfileRepo
+    ProfileVM --> Builder
+    BreathingVM --> Journal
+    BreathingVM --> Haptics
+    BreathingVM --> Breathing
+
+    ProfileRepo --> Storage
+    Journal --> Storage
+    Storage -.implemented by.-> UD
+    Storage -.implemented by.-> Mem
+    Haptics -.implemented by.-> CH
+
+    Container -.creates & injects.-> HomeVM
+    Container -.creates & injects.-> ProfileVM
+    Container -.creates & injects.-> BreathingVM
+    Container -.creates.-> ProfileRepo
+    Container -.creates.-> Journal

@@ -30,7 +30,7 @@ final class MotivationViewModel {
             let quote = try await service.fetchRandomQuote()
             state = .loaded(quote)
         } catch let error as NetworkError {
-            state = (error == .empty) ? .empty : .failed(error.localizedDescription ?? "Сталася помилка.")
+            state = (error == .empty) ? .empty : .failed(error.localizedDescription)
         } catch {
             state = .failed(error.localizedDescription)
         }

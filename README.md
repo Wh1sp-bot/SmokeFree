@@ -5,8 +5,8 @@
 гострої тяги. Працює **без реєстрації та без обов'язкового інтернету** — дані
 лишаються на пристрої.
 
-> Груповий навчальний проєкт курсу «Основи iOS-розробки». Кожна практична робота
-> розвиває попередню; завершені етапи позначено Git-тегами `practical-1` … `practical-4`.
+> Навчальний проєкт курсу «Основи iOS-розробки». Кожна практична робота
+> розвиває попередню; актуальну завершену версію позначено Git-тегом `practical-4`.
 
 ## Технічні вимоги
 
@@ -16,7 +16,7 @@
 | Swift | 5 (режим мови Swift 5) |
 | Мінімальна iOS | 17.0 (потрібна для `@Observable`) |
 | Пристрої | iPhone (симулятор або реальний) |
-| Bundle Identifier | `com.example.SmokeFree` — **замініть на свій** у `project.yml` |
+| Bundle Identifier | `com.wh1sp.SmokeFree` |
 
 ## Як запустити
 
@@ -24,7 +24,7 @@ Xcode-проєкт описано файлом `project.yml` (XcodeGen), том�
 відтворюється однією командою:
 
 ```bash
-git clone <URL-репозиторію> && cd SmokeFree
+git clone https://github.com/Wh1sp-bot/SmokeFree.git && cd SmokeFree
 brew install xcodegen        # один раз
 xcodegen generate            # створює SmokeFree.xcodeproj
 open SmokeFree.xcodeproj
@@ -153,8 +153,8 @@ SmokeFree/
 Продовжує практичну 2. Карта переходів, відповідальність Coordinator/Router,
 передавання даних та анімації — у [docs/navigation.md](docs/navigation.md).
 Відповіді на питання до захисту — [docs/defense/practical-3.md](docs/defense/practical-3.md).
-Скриншоти/відео проходження сценарію: [docs/screenshots/](docs/screenshots/)
-(додайте самостійно за інструкцією там — я не можу зняти їх без симулятора).
+Чекліст для скриншотів/відео проходження сценарію: [docs/screenshots/](docs/screenshots/).
+Медіафайли потрібно додати після фінальної перевірки на симуляторі.
 
 ### Екрани та навігація
 
@@ -205,15 +205,11 @@ Passed On Launch (можна поєднувати з `-demo-data`).
 
 ## Git
 
-- Віддалений репозиторій: `git remote add origin <URL> && git push -u origin main --tags`
+- Віддалений репозиторій: <https://github.com/Wh1sp-bot/SmokeFree>
 - `.gitignore` виключає `xcuserdata`, `DerivedData`, `build`, `.DS_Store`, ключі та
   сертифікати. У репозиторії лишаються код, `project.yml`, ресурси, тести й документація.
-- Теги здачі: `practical-1`, `practical-2`, `practical-3`, `practical-4`.
+- Тег фінальної версії: `practical-4`.
 
-## Внесок учасників команди
-
-| Учасник | Внесок |
-|---|---|
-| _ПІБ 1_ | _наприклад: моделі `QuitProfile`, `Currency`, валідація_ |
-| _ПІБ 2_ | _наприклад: `ProgressCalculator`, `CravingJournal`, тести_ |
-| _ПІБ 3_ | _наприклад: `HealthMilestone`, `ConsoleScenario`, README_ |
+> Історія початкової реалізації була імпортована одним комітом. Подальші
+> виправлення оформлено окремими змістовними комітами без переписування
+> опублікованої історії.

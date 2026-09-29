@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+
+# Xcode user-specific data
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Build products and caches
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Xcode playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Signing material and local secrets
+*.p12
+*.mobileprovision
+*.cer
+.env
+.env.*
+!.env.example

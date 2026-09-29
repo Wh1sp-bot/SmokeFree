@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Екран дихальної вправи (у практичній 2 — базова версія без анімації кола).
+/// Екран дихальної вправи з вибором техніки та тригера тяги.
 struct SOSView: View {
     @State private var viewModel: BreathingViewModel
 

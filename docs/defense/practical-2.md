@@ -64,4 +64,4 @@ Unit-тести підміняють залежності тестовими д�
    SOS-вправа зі зміною техніки (Strategy).
 4. `⌘U` → усі тести зелені, включно з `QuitProfileBuilderTests`, `StorageTests`,
    `BreathingTests`.
-5. `git log --oneline` і тег `practical-2`.
+5. `git log --oneline` і фінальний тег `practical-4`.

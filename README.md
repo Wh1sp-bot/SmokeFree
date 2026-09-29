@@ -153,8 +153,7 @@ SmokeFree/
 Продовжує практичну 2. Карта переходів, відповідальність Coordinator/Router,
 передавання даних та анімації — у [docs/navigation.md](docs/navigation.md).
 Відповіді на питання до захисту — [docs/defense/practical-3.md](docs/defense/practical-3.md).
-Чекліст для скриншотів/відео проходження сценарію: [docs/screenshots/](docs/screenshots/).
-Медіафайли потрібно додати після фінальної перевірки на симуляторі.
+Скриншоти проходження сценарію: [docs/screenshots/](docs/screenshots/).
 
 ### Екрани та навігація
 
